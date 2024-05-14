@@ -1,6 +1,6 @@
 import Toast from './Toast'
 import useGenerateRandomColor from './useGenerateRandomColor'
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import  useToast from './useToast'
 import './App.css'
 
@@ -9,6 +9,10 @@ const App = () => {
   const [isPartying, setIsPartying] = useState(false)
   const intervalRef = useRef(null)
   const { toasts, toast } = useToast();
+
+  useEffect(() => {
+    generateColor()
+  }, [])
 
   const handleClick = () => {
       toast({

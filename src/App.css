@@ -6,7 +6,7 @@
     align-items: center;
     -ms-user-select: none;
     -webkit-user-select: none;
-    user-select: text;
+    user-select: none;
 }
 .colorSelector {
     background: none;
