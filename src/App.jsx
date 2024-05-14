@@ -36,7 +36,6 @@ const App = () => {
 
 
   return (
-    <>
       <div
         style={styles}
         className="App"
@@ -59,7 +58,6 @@ const App = () => {
         </button>
         <Toast toasts={toasts} />
       </div>
-    </>
   )
 }
 
