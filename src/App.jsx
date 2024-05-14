@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { useToast } from './ToastContext';
+import { useToast } from './components/toast/ToastContext';
 import './App.css';
 import useGenerateRandomColor from './useGenerateRandomColor';
 
