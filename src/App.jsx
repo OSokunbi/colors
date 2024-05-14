@@ -1,11 +1,22 @@
+import Toast from './Toast'
 import useGenerateRandomColor from './useGenerateRandomColor'
 import { useState, useRef } from 'react'
+import  useToast from './useToast'
 import './App.css'
 
-function App() {
+const App = () => {
   const [color, generateColor] = useGenerateRandomColor('00000')
   const [isPartying, setIsPartying] = useState(false)
   const intervalRef = useRef(null)
+  const { toasts, toast } = useToast();
+
+  const handleClick = () => {
+      toast({
+        title: "Copied to Clipboard",
+        description: "The color has been copied to your clipboard",
+      });
+      navigator.clipboard.writeText(`#${color}`);
+    };
 
   const styles = {
     backgroundColor: `#${color}`,
@@ -23,13 +34,21 @@ function App() {
     }
   }
 
+
   return (
     <>
-      <div style={styles} className="App">
+      <div
+        style={styles}
+        className="App"
+        onClick={generateColor}
+      >
         <button
           id="colorSelector"
           className="colorSelector"
-          onClick={generateColor}
+          onClick={(e) => {
+            e.stopPropagation()
+            handleClick()}
+          }
         >
           <h1>{`#${color}`}</h1>
         </button>
@@ -38,6 +57,7 @@ function App() {
           className="party">
           <h2>{isPartying ? 'Stop the Party!' : 'Party Time!'}</h2>
         </button>
+        <Toast toasts={toasts} />
       </div>
     </>
   )
